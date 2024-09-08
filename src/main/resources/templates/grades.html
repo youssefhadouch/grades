@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grades</title>
+    <link th:href="@{/grades-stylesheets.css}" rel="stylesheet">
+</head>
+<body>
+
+<div class="topnav">
+    <a th:href="@{/}">Form</a>
+    <a th:href="@{/grades}">Grades</a>
+</div>
+
+<div class="container">
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>Student</th>
+            <th>Subject</th>
+            <th>Score</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="tr" th:each="grade : ${grades}">
+            <td th:text="${grade.name}"></td>
+            <td th:text="${grade.subject}"></td>
+            <td th:text="${grade.score}"></td>
+            <td><a role="button" class="update-button" th:href="@{/(name=${grade.name})}">Update</a></td >
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
